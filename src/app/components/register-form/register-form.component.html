@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <div class="card text-bg-light my-3">
+        <div class="card-header">Register</div>
+        <div class="card-body">
+
+          <form class="row g-3 needs-validation" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="col-md-4">
+              <label for="first_name" class="form-label">First name</label>
+              <input type="text" class="form-control" id="first_name" formControlName="firstName">
+            </div>
+            <div class="col-md-4">
+              <label for="last_name" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="last_name" formContolName="lastName">
+            </div>
+            <div class="col-md-4">
+              <label for="birth_date" class="form-label">Birth Date</label>
+              <input type="date" class="form-control" id="birth_date" formControlName="birthDate">
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" formControlName="email">
+            </div>
+            <div class="col-md-6">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Register!</button> 
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
