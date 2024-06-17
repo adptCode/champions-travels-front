@@ -9,27 +9,47 @@
           <form class="row g-3 needs-validation" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="col-md-4">
               <label for="first_name" class="form-label">First name</label>
-              <input type="text" class="form-control" id="first_name" formControlName="firstName">
+              <input type="text" class="form-control" id="first_name" formControlName="first_name"
+              [ngClass]="{'is-invalid': hasErrors('first_name', 'required') || hasErrors('first_name', 'pattern') || hasErrors('first_name', 'minlength')}">
+              @if (hasErrors('first_name', 'required')) { <span class="text-danger">First name is required.</span> }
+              @if (hasErrors('first_name', 'pattern')) { <span class="text-danger">Invalid first name format.</span> }
+              @if (hasErrors('first_name', 'minlength')) { <span class="text-danger">First name must be at least 3 characters long.</span> }
             </div>
             <div class="col-md-4">
               <label for="last_name" class="form-label">Last name</label>
-              <input type="text" class="form-control" id="last_name" formContolName="lastName">
+              <input type="text" class="form-control" id="last_name" formControlName="last_name"
+              [ngClass]="{'is-invalid': hasErrors('last_name', 'required') || hasErrors('last_name', 'pattern') || hasErrors('last_name', 'minlength')}">
+              @if (hasErrors('last_name', 'required')) { <span class="text-danger">Last name is required.</span> }
+              @if (hasErrors('last_name', 'pattern')) { <span class="text-danger">Invalid last name format.</span> }
+              @if (hasErrors('last_name', 'minimumAge')) { <span class="text-danger">Last name must be at least 3 characters long.</span> }
             </div>
             <div class="col-md-4">
               <label for="birth_date" class="form-label">Birth Date</label>
-              <input type="date" class="form-control" id="birth_date" formControlName="birthDate">
+              <input type="date" class="form-control" id="birth_date" formControlName="birth_date"
+              [ngClass]="{'is-invalid': hasErrors('birth_date', 'required') || hasErrors('birth_date', 'minimumAge')}">
+              @if (hasErrors('birth_date', 'required')) { <span class="text-danger">Last name is required.</span> }
+              @if (hasErrors('birth_date', 'pattern')) { <span class="text-danger">You must be at least 18 years old.</span> }
             </div>
             <div class="col-md-6">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" formControlName="email">
+              <input type="email" class="form-control" id="email" formControlName="email"
+              [ngClass]="{'is-invalid': hasErrors('email', 'required') || hasErrors('email', 'email')}">
+              @if (hasErrors('email', 'required')) { <span class="text-danger">Email is required.</span> }
+              @if (hasErrors('email', 'email')) { <span class="text-danger">Invalid email format.</span> }
             </div>
             <div class="col-md-6">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" formControlName="password">
+              <input type="password" class="form-control" id="password" formControlName="password"
+              [ngClass]="{'is-invalid': hasErrors('password', 'required') || hasErrors('password', 'minlength') || hasErrors('password', 'forbiddenPassword')}">
+              @if (hasErrors('password', 'required')) { <span class="text-danger">Password is required.</span> }
+              @if (hasErrors('password', 'minlength')) { <span class="text-danger">Password must be at least 5 characters long.</span> }
+              @if (hasErrors('password', 'forbiddenPassword')) { <span class="text-danger">Password is too basic.</span> }
             </div>
             <div class="col-12">
-              <button class="btn btn-primary" type="submit">Register!</button> 
+              <button class="btn btn-primary" type="submit">Register!</button>
             </div>
+
+            <div class="mt-2 info">Already a member? <a routerLink="/login" > Login</a></div>
 
           </form>
 

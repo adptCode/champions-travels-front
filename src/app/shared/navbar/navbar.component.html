@@ -16,17 +16,22 @@
           <li class="nav-item">
             <a class="nav-link active" routerLink="/events">Events</a>
           </li>
+          @if (isAdmin) {
+            <li class="nav-item">
+              <a class="nav-link active" routerLink="/admin">Admin</a>
+            </li>
+          }
         </ul>
       </div>
       <div class="ms-auto">
-        @if (!isLoggedIn) {
+        @if (!isAuthenticated) {
           <form>
             <button class="btn btn-sm btn-outline-secondary" type="button" routerLink="/login">Login</button>
             <button class="btn btn-sm btn-outline-secondary ms-1" type="button" routerLink="/register">Register</button>
           </form>
         } @else {
           <form>
-            <button class="btn btn-sm btn-outline-secondary" type="button">Logout</button>
+            <button class="btn btn-sm btn-outline-secondary" type="button" (click)="logout()">Logout</button>
           </form>
         }
 
