@@ -10,11 +10,17 @@
 
             <div class="col-12">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" formControlName="email">
+              <input type="email" class="form-control" id="email" formControlName="email"
+              [ngClass]="{'is-invalid': hasErrors('email', 'required') || hasErrors('email', 'email')}">
+              @if (hasErrors('email', 'required')) { <span class="text-danger">Email is required.</span> }
+              @if (hasErrors('email', 'email')) { <span class="text-danger">Invalid email format.</span> }
             </div>
             <div class="col-12">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" formControlName="password">
+              <input type="password" class="form-control" id="password" formControlName="password"
+              [ngClass]="{'is-invalid': hasErrors('password', 'required') || hasErrors('password', 'minlength')}">
+              @if (hasErrors('password', 'required')) { <span class="text-danger">Password is required.</span> }
+              @if (hasErrors('password', 'minlength')) { <span class="text-danger">Password must be at least 5 characters long.</span> }
             </div>
             <div class="col-12">
               <button class="btn btn-primary" type="submit">Login!</button>

@@ -20,6 +20,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterFormComponent {
   registerForm!: FormGroup;
+  message: string = '';
+  alertType: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -67,23 +69,36 @@ export class RegisterFormComponent {
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
       return;
-    } else {
-      console.log(this.registerForm.value);
+    }
+
       this.authService.register(this.registerForm.value).subscribe({
         next: (response) => {
+          this.message = 'User registered successfully';
+          this.alertType = 'success';
           console.log('User registered successfully', response);
-          this.router.navigate(['/login']);
+          //this.router.navigate(['/login']);
           this.registerForm.reset();
         },
         error: (error) => {
+          this.message = 'Registration error';
+          this.alertType = 'danger';
           console.error('Registration error', error);
           if (error.error && error.error.errors) {
             error.error.errors.forEach((err: any) => {
+              this.message += ` - Error in ${err.path}: ${err.msg}`;
               console.error(`Error in ${err.path}: ${err.msg}`);
             });
           }
         },
       });
+    
+  }
+
+  closeAlert() {
+    if (this.alertType === 'success') {
+      this.router.navigate(['/login']);
     }
+    this.message = '';
+    this.alertType = '';
   }
 }

@@ -31,11 +31,14 @@ export class LoginFormComponent {
         '',
         [
           Validators.required,
-          Validators.minLength(5),
-          forbiddenPasswordValidator('123456'),
+          Validators.minLength(5)
         ],
       ],
     });
+  }
+
+  hasErrors(field:string, errorType:string) {
+    return this.loginForm.get(field)?.hasError(errorType) && this.loginForm.touched
   }
 
   onSubmit() {
