@@ -22,6 +22,15 @@ export class AuthService {
 
   register(userData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, userData).pipe(
+      tap(() => {
+        this.router.navigate(['/login']);
+      })
+    );
+  }
+
+  /*
+  register(userData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/register`, userData).pipe(
       tap((response: any) => {
         const token = response.data.token;
         localStorage.setItem('authToken', token);
@@ -32,6 +41,8 @@ export class AuthService {
       })
     );
   }
+
+  */
 
   login(credentials: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, credentials, { withCredentials: true }).pipe(

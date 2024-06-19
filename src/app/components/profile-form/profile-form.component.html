@@ -134,16 +134,17 @@
                 <div class="col-md-6">
                   <label for="city" class="form-label">City</label>
                   <input type="text" class="form-control" id="city" formControlName="city"
-                  [ngClass]="{'is-invalid': hasErrors('city', 'pattern') || hasErrors('city', 'minlength')}">
+                  [ngClass]="{'is-invalid': hasErrors('city', 'pattern')}">
                   @if (hasErrors('city', 'pattern')) { <span class="text-danger">Invalid city format.</span> }
-                  @if (hasErrors('city', 'minlength')) { <span class="text-danger">City name must be at least 3 characters long.</span> }
                 </div>
                 <div class="col-md-6">
                   <label for="country" class="form-label">Country</label>
-                  <input type="text" class="form-control" id="country" formControlName="country"
-                  [ngClass]="{'is-invalid': hasErrors('country', 'pattern') || hasErrors('country', 'minlength')}">
-                  @if (hasErrors('country', 'pattern')) { <span class="text-danger">Invalid country format.</span> }
-                  @if (hasErrors('country', 'minlength')) { <span class="text-danger">Country name must be at least 3 characters long.</span> }
+                  <select class="form-control" id="country" formControlName="country">
+                    <option value="">Select a country</option>
+                    @for (country of countries; track $index) {
+                      <option  [value]="country.name">{{ country.name }}</option>
+                    }
+                  </select>
                 </div>
 
                 <div class="col-12">
@@ -161,6 +162,21 @@
                   }
                 </div>
               </div>
+
+              <div class="mt-4">
+                <h5>Favorite Teams</h5>
+                <ul class="list-group">
+                  <li *ngFor="let team of teams" class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ team }}
+                    <button (click)="removeTeam(team)" class="btn btn-sm btn-danger">Remove</button>
+                  </li>
+                </ul>
+                <div class="input-group mt-3">
+                  <input type="text" class="form-control" [(ngModel)]="newTeam" placeholder="Add a team">
+                  <button (click)="addTeam()" class="btn btn-primary">Add</button>
+                </div>
+              </div>
+            
 
             </div>
           </div>

@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
+import { minimumAgeValidator } from '../../validators/age-validator';
+import { CountryService } from '../../services/country.service';
 
 @Component({
   selector: 'app-profile-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './profile-form.component.html',
   styleUrl: './profile-form.component.css'
 })
@@ -19,43 +21,74 @@ export class ProfileFormComponent {
   selectedFile: File | null = null;
   user: any = {};
   profilePictureUrl!: string | null;
+  countries: any[] = [];
+  newTeam: string = '';
+  teams: string[] = [];
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private countryService: CountryService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.profileForm = this.fb.group({
-      first_name: ['', [Validators.required]],
-      last_name: ['', [Validators.required]],
-      birth_date: ['', [Validators.required]],
-      city: [''],
+      first_name: ['', [Validators.required, Validators.pattern(/^[A-Za-zÀ-ÿÑñ\s]+$/),
+        Validators.minLength(3)]],
+      last_name: ['', [Validators.required, Validators.pattern(/^[A-Za-zÀ-ÿÑñ\s]+$/),
+        Validators.minLength(3)]],
+      birth_date: ['', [Validators.required, minimumAgeValidator(18)]],
+      city: ['', Validators.pattern(/^[A-Za-zÀ-ÿÑñ\s]+$/)],
       country: [''],
       preferences: ['']
     });
 
     this.loadUser();
+    this.loadCountries()
   }
 
   loadUser() {
     this.userService.getUser().subscribe({
       next: (response) => {
         this.user = response.data;
-        this.profileForm.patchValue(this.user);
+        this.user.birth_date = this.formatDate(this.user.birth_date);
+        this.profileForm.patchValue(this.user)
         console.log(response);
         if(this.user.profile_picture) {
           this.profilePictureUrl = this.user.profile_picture
         } else {
           this.profilePictureUrl = '/assets/facebookanonimo.jpg';
         }
-
+        this.teams = this.user.preferences || [];
       },
       error: (error) => {
         console.error('Error loading user data', error);
       }
     });
+  }
+
+  loadCountries() {
+    this.countryService.getCountries().subscribe({
+      next: (response) => {
+        this.countries = response.map((country: any) => ({
+          name: country.name.common,
+          code: country.cca2
+        })).sort((a: any, b: any) => a.name.localeCompare(b.name));
+      },
+      error: (error) => {
+        console.error('Error loading countries', error);
+      }
+    });
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+
+    return `${year}-${month}-${day}`;
   }
 
   hasErrors(field:string, errorType:string) {
@@ -134,6 +167,31 @@ export class ProfileFormComponent {
         this.message = 'Error deleting photo';
         this.alertType = 'danger';
         console.error('Error deleting photo', error);
+      }
+    });
+  }
+
+  addTeam() {
+    if (this.newTeam.trim()) {
+      this.userService.addPreference(this.newTeam.trim()).subscribe({
+        next: (response) => {
+          this.teams.push(this.newTeam.trim());
+          this.newTeam = '';
+        },
+        error: (error) => {
+          console.error('Error adding team', error);
+        }
+      });
+    }
+  }
+
+  removeTeam(team: string) {
+    this.userService.removePreference(team).subscribe({
+      next: (response) => {
+        this.teams = this.teams.filter(t => t !== team);
+      },
+      error: (error) => {
+        console.error('Error removing team', error);
       }
     });
   }

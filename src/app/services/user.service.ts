@@ -30,5 +30,16 @@ export class UserService {
 
   deletePhoto(): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/delete-photo`, { withCredentials: true });
-  } 
+  }
+
+  addPreference(teamName: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/preferences`, { team_name: teamName }, { withCredentials: true });
+  }
+
+  removePreference(teamName: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/preferences`, {
+      body: { team_name: teamName },
+      withCredentials: true
+    });
+  }
 }
