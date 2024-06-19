@@ -3,17 +3,25 @@
     <div class="col">
 
       <div class="card text-bg-light my-3">
-        <div class="card-header">Register</div>
+        <div class="card-header">Profile</div>
+
+
+          <div class="mt-3">
+            <img src="{{profilePictureUrl}}" alt="Profile Picture" class="img-thumbnail" style="max-width: 200px;">
+
+          </div>
+
+
         <div class="card-body">
 
           @if (message) {
-            <div class="alert" [ngClass]="{'alert-success': alertType === 'success', 'alert-danger': alertType === 'danger'}">
+            <div class="alert" [ngClass]="{'alert-success': alertType === 'success', 'alert-danger': alertType === 'danger', 'alert-warning': alertType === 'warning'}">
               <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()"></button>
               {{ message }}
             </div>
           }
 
-          <form class="row g-3 needs-validation" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <form class="row g-3 needs-validation" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
             <div class="col-md-4">
               <label for="first_name" class="form-label">First name</label>
               <input type="text" class="form-control" id="first_name" formControlName="first_name"
@@ -28,7 +36,7 @@
               [ngClass]="{'is-invalid': hasErrors('last_name', 'required') || hasErrors('last_name', 'pattern') || hasErrors('last_name', 'minlength')}">
               @if (hasErrors('last_name', 'required')) { <span class="text-danger">Last name is required.</span> }
               @if (hasErrors('last_name', 'pattern')) { <span class="text-danger">Invalid last name format.</span> }
-              @if (hasErrors('last_name', 'minlength')) { <span class="text-danger">Last name must be at least 3 characters long.</span> } 
+              @if (hasErrors('last_name', 'minlength')) { <span class="text-danger">Last name must be at least 3 characters long.</span> }
             </div>
             <div class="col-md-4">
               <label for="birth_date" class="form-label">Birth Date</label>
@@ -37,28 +45,37 @@
               @if (hasErrors('birth_date', 'required')) { <span class="text-danger">Birth date is required.</span> }
               @if (hasErrors('birth_date', 'minimumAge')) { <span class="text-danger">You must be at least 18 years old.</span> }
             </div>
-            <div class="col-md-6">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" formControlName="email"
-              [ngClass]="{'is-invalid': hasErrors('email', 'required') || hasErrors('email', 'email')}">
-              @if (hasErrors('email', 'required')) { <span class="text-danger">Email is required.</span> }
-              @if (hasErrors('email', 'email')) { <span class="text-danger">Invalid email format.</span> }
+            <div class="col-md-4">
+              <label for="city" class="form-label">City</label>
+              <input type="text" class="form-control" id="city" formControlName="city"
+              [ngClass]="{'is-invalid': hasErrors('city', 'pattern') || hasErrors('city', 'minlength')}">
+              @if (hasErrors('city', 'pattern')) { <span class="text-danger">Invalid last name format.</span> }
+              @if (hasErrors('city', 'minimumAge')) { <span class="text-danger">Last name must be at least 3 characters long.</span> }
             </div>
-            <div class="col-md-6">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" formControlName="password"
-              [ngClass]="{'is-invalid': hasErrors('password', 'required') || hasErrors('password', 'minlength') || hasErrors('password', 'forbiddenPassword')}">
-              @if (hasErrors('password', 'required')) { <span class="text-danger">Password is required.</span> }
-              @if (hasErrors('password', 'minlength')) { <span class="text-danger">Password must be at least 5 characters long.</span> }
-              @if (hasErrors('password', 'forbiddenPassword')) { <span class="text-danger">Password is too basic.</span> }
+            <div class="col-md-4">
+              <label for="country" class="form-label">country</label>
+              <input type="text" class="form-control" id="country" formControlName="country"
+              [ngClass]="{'is-invalid': hasErrors('country', 'pattern') || hasErrors('country', 'minlength')}">
+              @if (hasErrors('country', 'pattern')) { <span class="text-danger">Invalid last name format.</span> }
+              @if (hasErrors('country', 'minlength')) { <span class="text-danger">Last name must be at least 3 characters long.</span> }
             </div>
+
             <div class="col-12">
-              <button class="btn btn-primary" type="submit">Register!</button>
+              <button class="btn btn-primary" type="submit">Update Profile</button>
+            </div>
+          </form>
+
+          <div class="form-group mt-4">
+            <label for="file">Profile Picture</label>
+            <input type="file" id="file" (change)="onFileChanged($event)" class="form-control">
+            <div class="d-flex">
+              <button (click)="onUpload()" class="btn btn-secondary mt-3">Upload Photo</button>
+            @if (profilePictureUrl !== '/assets/facebookanonimo.jpg') {
+              <button (click)="deletePhoto()" class="btn btn-danger mt-3 ms-2">Delete Photo</button>
+            }
             </div>
 
-            <div class="mt-2 info">Already a member? <a routerLink="/login" > Login</a></div>
-
-          </form>
+          </div>
 
         </div>
       </div>
@@ -66,3 +83,4 @@
     </div>
   </div>
 </div>
+

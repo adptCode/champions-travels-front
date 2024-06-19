@@ -5,6 +5,12 @@
       <div class="card text-bg-light my-3">
         <div class="card-header">Login</div>
         <div class="card-body">
+          @if (message) {
+            <div class="alert alert-danger" >
+              <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()"></button>
+              {{ message }}
+            </div>
+          }
 
           <form class="row g-3 needs-validation" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 

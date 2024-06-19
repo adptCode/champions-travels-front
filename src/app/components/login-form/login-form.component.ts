@@ -19,6 +19,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginFormComponent {
   loginForm!: FormGroup;
+  message: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -38,7 +39,7 @@ export class LoginFormComponent {
   }
 
   hasErrors(field:string, errorType:string) {
-    return this.loginForm.get(field)?.hasError(errorType) && this.loginForm.touched
+    return this.loginForm.get(field)?.hasError(errorType) && this.loginForm.get(field)?.touched
   }
 
   onSubmit() {
@@ -53,8 +54,18 @@ export class LoginFormComponent {
       },
       error: error => {
         console.error('Login error', error);
+        this.message = 'Login error';
+          if (error.error && error.error.errors) {
+            error.error.errors.forEach((err: any) => {
+              this.message += ` - ${err.message}`;
+            });
+          }
       }
     });
+  }
+
+  closeAlert() {
+    this.message = '';
   }
 }
 
