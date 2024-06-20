@@ -1,0 +1,71 @@
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card text-bg-light my-3">
+        <div class="row g-0">
+          <div class="card-header d-flex justify-content-between">
+            <div>{{ eventId ? 'Edit Event' : 'Add Event' }}</div>
+            <a routerLink='/admin/events'>Back to list</a>
+          </div>
+          <div class="col-md-4 d-flex align-items-start justify-content-center mt-4">
+            <img [src]="eventPictureUrl" alt="Event Picture" class="img-thumbnail">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <div *ngIf="message" class="alert" [ngClass]="{'alert-success': alertType === 'success', 'alert-danger': alertType === 'danger', 'alert-warning': alertType === 'warning'}">
+                <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()"></button>
+                {{ message }}
+              </div>
+
+              <form class="row g-3 needs-validation" [formGroup]="eventForm" (ngSubmit)="submitForm()" enctype="multipart/form-data">
+                <div class="col-md-6">
+                  <label for="title" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="title" formControlName="title"
+                  [ngClass]="{'is-invalid': hasErrors('title', 'required')}">
+                  <div *ngIf="hasErrors('title', 'required')" class="text-danger">Title is required.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="event_date" class="form-label">Date</label>
+                  <input type="date" class="form-control" id="event_date" formControlName="event_date"
+                  [ngClass]="{'is-invalid': hasErrors('event_date', 'required')}">
+                  <div *ngIf="hasErrors('event_date', 'required')" class="text-danger">Event date is required.</div>
+                </div>
+                <div class="col-md-12">
+                  <label for="description" class="form-label">Description</label>
+                  <textarea class="form-control" id="description" formControlName="description"
+                  [ngClass]="{'is-invalid': hasErrors('description', 'required')}"></textarea>
+                  <div *ngIf="hasErrors('description', 'required')" class="text-danger">Description is required.</div>
+                </div>
+                <div class="col-md-12">
+                  <label for="location" class="form-label">Location</label>
+                  <input type="text" class="form-control" id="location" formControlName="location"
+                  [ngClass]="{'is-invalid': hasErrors('location', 'required')}">
+                  <div *ngIf="hasErrors('location', 'required')" class="text-danger">Location is required.</div>
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">{{ eventId ? 'Update' : 'Create' }}</button>
+                </div>
+              </form>
+
+              <div class="form-group mt-4">
+                <label for="file">Event Picture</label>
+                <input type="file" id="file" (change)="onFileChange($event)" class="form-control">
+                <div class="d-flex">
+                  <button (click)="onUpload()" class="btn btn-secondary mt-3">Upload Photo</button>
+                  <button *ngIf="eventPictureUrl !== '/assets/facebookanonimo.jpg'" (click)="deletePhoto()" class="btn btn-danger mt-3 ms-2">Delete Photo</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
