@@ -11,25 +11,27 @@
           <th>Title</th>
           <th>Description</th>
           <th>Date</th>
+          <th>Time</th>
           <th>Location</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let event of events">
-          <td><img [src]="event.photo ? 'http://localhost:3000/uploads-event/' + event.photo : '/assets/facebookanonimo.jpg'" alt="{{ event.title }}" width="100"></td>
-          <td>{{ event.title }}</td>
-          <td>{{ event.description }}</td>
-          <td>{{ event.event_date | date }}</td>
-          <td>{{ event.location }}</td>
-          <td>
-            <button class="btn btn-warning btn-sm" routerLink="/admin/event-edit/{{event.id}}">Edit</button>
-            <button class="btn btn-danger btn-sm" (click)="deleteEvent(event.id)">Delete</button>
-          </td>
-        </tr>
+        @for (event of events; track $index) {
+          <tr>
+            <td><img [src]="event.photo ? 'http://localhost:3000/uploads-event/' + event.photo : '/assets/facebookanonimo.jpg'" alt="{{ event.title }}" width="100"></td>
+            <td>{{ event.title }}</td>
+            <td>{{ event.description }}</td>
+            <td>{{ event.event_date | date }}</td>
+            <td>{{ event.start_time }}</td>
+            <td>{{ event.location }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm" routerLink="/admin/event-edit/{{event.id}}">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteEvent(event.id)">Delete</button>
+            </td>
+          </tr>
+        }
       </tbody>
     </table>
-
   </div>
-
 </div>

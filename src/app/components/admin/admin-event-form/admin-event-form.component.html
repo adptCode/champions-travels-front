@@ -13,36 +13,50 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <div *ngIf="message" class="alert" [ngClass]="{'alert-success': alertType === 'success', 'alert-danger': alertType === 'danger', 'alert-warning': alertType === 'warning'}">
-                <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()"></button>
-                {{ message }}
-              </div>
-
+              @if (message) {
+                <div class="alert" [ngClass]="{'alert-success': alertType === 'success', 'alert-danger': alertType === 'danger', 'alert-warning': alertType === 'warning'}">
+                  <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()"></button>
+                  {{ message }}
+                </div>
+              }
               <form class="row g-3 needs-validation" [formGroup]="eventForm" (ngSubmit)="submitForm()" enctype="multipart/form-data">
                 <div class="col-md-6">
                   <label for="title" class="form-label">Title</label>
                   <input type="text" class="form-control" id="title" formControlName="title"
                   [ngClass]="{'is-invalid': hasErrors('title', 'required')}">
-                  <div *ngIf="hasErrors('title', 'required')" class="text-danger">Title is required.</div>
+                  @if (hasErrors('title', 'required')) {<span class="text-danger">Title is required.</span>}
                 </div>
                 <div class="col-md-6">
                   <label for="event_date" class="form-label">Date</label>
                   <input type="date" class="form-control" id="event_date" formControlName="event_date"
                   [ngClass]="{'is-invalid': hasErrors('event_date', 'required')}">
-                  <div *ngIf="hasErrors('event_date', 'required')" class="text-danger">Event date is required.</div>
+                  @if (hasErrors('event_date', 'required')) {<span class="text-danger">Event date is required.</span>}
+                </div>
+                <div class="col-md-6">
+                  <label for="start_time" class="form-label">Start Time</label>
+                  <input type="time" class="form-control" id="start_time" formControlName="start_time"
+                  [ngClass]="{'is-invalid': hasErrors('start_time', 'required')}">
+                  @if (hasErrors('start_time', 'required')) {<span class="text-danger">Start time is required.</span>}
+                </div>
+                <div class="col-md-6">
+                  <label for="end_time" class="form-label">End Time</label>
+                  <input type="time" class="form-control" id="end_time" formControlName="end_time"
+                  [ngClass]="{'is-invalid': hasErrors('end_time', 'required')}">
+                  @if (hasErrors('end_time', 'required')) {<span class="text-danger">End time is required.</span>}
                 </div>
                 <div class="col-md-12">
                   <label for="description" class="form-label">Description</label>
                   <textarea class="form-control" id="description" formControlName="description"
                   [ngClass]="{'is-invalid': hasErrors('description', 'required')}"></textarea>
-                  <div *ngIf="hasErrors('description', 'required')" class="text-danger">Description is required.</div>
+                  @if (hasErrors('description', 'required')) {<span class="text-danger">Description is required.</span>}
                 </div>
                 <div class="col-md-12">
                   <label for="location" class="form-label">Location</label>
                   <input type="text" class="form-control" id="location" formControlName="location"
                   [ngClass]="{'is-invalid': hasErrors('location', 'required')}">
-                  <div *ngIf="hasErrors('location', 'required')" class="text-danger">Location is required.</div>
+                  @if (hasErrors('location', 'required')) {<span class="text-danger">Location is required.</span>}
                 </div>
+
 
                 <div class="col-12">
                   <button type="submit" class="btn btn-primary">{{ eventId ? 'Update' : 'Create' }}</button>
@@ -54,7 +68,7 @@
                 <input type="file" id="file" (change)="onFileChange($event)" class="form-control">
                 <div class="d-flex">
                   <button (click)="onUpload()" class="btn btn-secondary mt-3">Upload Photo</button>
-                  <button *ngIf="eventPictureUrl !== '/assets/facebookanonimo.jpg'" (click)="deletePhoto()" class="btn btn-danger mt-3 ms-2">Delete Photo</button>
+                  @if (eventPictureUrl !== '/assets/facebookanonimo.jpg') {<button (click)="deletePhoto()" class="btn btn-danger mt-3 ms-2">Delete Photo</button>}
                 </div>
               </div>
 

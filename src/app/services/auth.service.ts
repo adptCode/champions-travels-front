@@ -16,6 +16,7 @@ export class AuthService {
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
   isAdmin$ = this.isAdminSubject.asObservable();
 
+
   constructor(private http: HttpClient, private router: Router) {
     this.checkAuthStatus();
   }
@@ -28,27 +29,13 @@ export class AuthService {
     );
   }
 
-  /*
-  register(userData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register`, userData).pipe(
-      tap((response: any) => {
-        const token = response.data.token;
-        localStorage.setItem('authToken', token);
-        this.setAuthStatus(token);
-        const redirectUrl = localStorage.getItem('redirectUrl') || '/home';
-        localStorage.removeItem('redirectUrl');
-        this.router.navigate([redirectUrl]);
-      })
-    );
-  }
-
-  */
 
   login(credentials: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, credentials, { withCredentials: true }).pipe(
       tap((response: any) => {
         const token = response.data.token;
         localStorage.setItem('authToken', token);
+        localStorage.setItem('userName', response.data.user.first_name)
         this.setAuthStatus(token);
         const redirectUrl = localStorage.getItem('redirectUrl') || '/home';
         localStorage.removeItem('redirectUrl');
@@ -59,6 +46,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('userName');
     this.isAuthenticatedSubject.next(false);
     this.isAdminSubject.next(false);
     this.router.navigate(['/login']);
@@ -92,56 +80,4 @@ export class AuthService {
     return localStorage.getItem('authToken');
   }
 
-  /*
-  register(userData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register`, userData);
-  }
-
-  login(credentials: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, credentials, { withCredentials: true }).pipe(
-      tap((response: any) => {
-        this.isAuthenticatedSubject.next(true);
-        this.isAdminSubject.next(response.data.user.role === 'admin');
-        const redirectUrl = localStorage.getItem('redirectUrl') || '/home'; // Ottiene l'URL di destinazione o imposta un URL predefinito
-        localStorage.removeItem('redirectUrl'); // Rimuove l'URL di destinazione dalla memoria locale
-        this.router.navigate([redirectUrl]); // Reindirizza l'utente
-      })
-    );
-  }
-
-  logout(): void {
-    this.http.get(`${this.baseUrl}/logout`).subscribe(() => {
-      this.isAuthenticatedSubject.next(false);
-      this.isAdminSubject.next(false);
-      this.router.navigate(['/login']);
-    });
-  }
-
-  forgotPassword(email: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/forgot-password`, email);
-  }
-
-  changePassword(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/change-password`, data);
-  }
-
-  checkAuthStatus(): void {
-    const token = this.getToken();
-    if (token) {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      this.isAuthenticatedSubject.next(true);
-      this.isAdminSubject.next(payload.role === 'admin');
-    } else {
-      this.isAuthenticatedSubject.next(false);
-      this.isAdminSubject.next(false);
-    }
-  }
-
-  private getToken(): string | null {
-    const token = document.cookie.split('; ').find(row => row.startsWith('token='));
-    return token ? token.split('=')[1] : null;
-  }
-
-
-  */
 }

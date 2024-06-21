@@ -33,6 +33,8 @@ constructor(
     title: ['', Validators.required],
     description: ['', Validators.required],
     event_date: ['', Validators.required],
+    start_time: ['', Validators.required],
+    end_time: ['', Validators.required],
     location: ['', Validators.required],
   });
   this.eventPictureUrl = this.defaultEventPictureUrl;
@@ -136,6 +138,10 @@ closeAlert() {
 }
 
 submitForm() {
+  if(this.eventForm.invalid) {
+    this.eventForm.markAllAsTouched();
+    return;
+  }
   const formData = new FormData();
   Object.keys(this.eventForm.controls).forEach(key => {
     formData.append(key, this.eventForm.get(key)?.value);
