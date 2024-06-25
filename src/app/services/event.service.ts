@@ -38,4 +38,16 @@ export class EventService {
   deletePhoto(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}/delete-photo`, { withCredentials: true });
   }
+
+  getParticipants(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}/participants`, { withCredentials: true });
+  }
+
+  participate(id: number): Observable<any> {
+    return this.http.post(`${this.baseUrl}/${id}/participate`, {}, { withCredentials: true });
+  }
+
+  leaveEvent(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}/leave`, { withCredentials: true });
+  }
 }

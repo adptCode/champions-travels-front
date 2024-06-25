@@ -1,0 +1,59 @@
+<div class="container mt-5">
+  <div class="card w-100" style="max-width: 800px;">
+    <img src="http://localhost:3000/uploads-event/{{event.photo}}" class="card-img-top" alt="Event Picture">
+    <div class="card-body">
+      @if (message) { <div class="alert alert-info mt-3">{{message}}</div> }
+      <h5 class="card-title">{{event.title}}</h5>
+      <p class="card-text">{{event.description}}</p>
+      <p class="card-text">Date: {{event.event_date | date:'mediumDate'}}</p>
+      <p class="card-text">Start Time: {{event.start_time}}</p>
+      <p class="card-text">End Time: {{event.end_time}}</p>
+      <p class="card-text">Location: {{event.location}}</p>
+      <div class="d-flex justify-content-between">
+        <div>
+          @if (!isParticipating) {
+            <button (click)="participate()" class="btn btn-primary">Participate</button>
+          }
+          @if (isParticipating) {
+            <button (click)="leave()" class="btn btn-warning">Leave</button>
+          }
+
+          @if (participants.length > 0) {
+            <button (click)="openParticipantsModal()" class="btn btn-info ms-sm-2">View participants</button>
+          }
+        </div>
+        <div>
+          <button class="btn btn-secondary" routerLink="/events">Back</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+@if (modal) {
+  <div class="modal" id="participantsModal" tabindex="-1" aria-labelledby="participantsModalLabel" aria-hidden="true" style="display: block;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-secondary text-white">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="participantsModalLabel">Participants</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group">
+            <li *ngFor="let participant of participants" class="list-group-item">
+              <div class="d-flex align-items-center">
+                <img [src]="participant.profile_picture ? 'http://localhost:3000/uploads/' + participant.profile_picture : '/assets/facebookanonimo.jpg'" class="rounded-circle me-2" alt="Profile Picture" width="40" height="40">
+                {{ participant.first_name }} {{ participant.last_name }}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+}
+
+

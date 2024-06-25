@@ -12,9 +12,12 @@ export class AuthService {
   private baseUrl = 'http://localhost:3000/auth';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   private isAdminSubject = new BehaviorSubject<boolean>(false);
+  private currentUserSubject = new BehaviorSubject<any>(null);
 
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
   isAdmin$ = this.isAdminSubject.asObservable();
+  currentUser$ = this.currentUserSubject.asObservable();
+
 
 
   constructor(private http: HttpClient, private router: Router) {
@@ -37,6 +40,7 @@ export class AuthService {
         localStorage.setItem('authToken', token);
         localStorage.setItem('userName', response.data.user.first_name)
         this.setAuthStatus(token);
+        this.currentUserSubject.next(response.data.user);
         const redirectUrl = localStorage.getItem('redirectUrl') || '/home';
         localStorage.removeItem('redirectUrl');
         this.router.navigate([redirectUrl]);
@@ -49,6 +53,7 @@ export class AuthService {
     localStorage.removeItem('userName');
     this.isAuthenticatedSubject.next(false);
     this.isAdminSubject.next(false);
+    this.currentUserSubject.next(null);
     this.router.navigate(['/login']);
   }
 
@@ -64,9 +69,11 @@ export class AuthService {
     const token = localStorage.getItem('authToken');
     if (token) {
       this.setAuthStatus(token);
+      this.getCurrentUser().subscribe();
     } else {
       this.isAuthenticatedSubject.next(false);
       this.isAdminSubject.next(false);
+      this.currentUserSubject.next(null);
     }
   }
 
@@ -80,4 +87,9 @@ export class AuthService {
     return localStorage.getItem('authToken');
   }
 
+  getCurrentUser(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/me`, { withCredentials: true }).pipe(
+      tap(user => this.currentUserSubject.next(user))
+    );
+  }
 }
