@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
 
-      <div class="card text-bg-light my-3">
+      <div class="card text-bg-dark my-3">
         <div class="card-header">Register</div>
         <div class="card-body">
 
@@ -28,7 +28,7 @@
               [ngClass]="{'is-invalid': hasErrors('last_name', 'required') || hasErrors('last_name', 'pattern') || hasErrors('last_name', 'minlength')}">
               @if (hasErrors('last_name', 'required')) { <span class="text-danger">Last name is required.</span> }
               @if (hasErrors('last_name', 'pattern')) { <span class="text-danger">Invalid last name format.</span> }
-              @if (hasErrors('last_name', 'minlength')) { <span class="text-danger">Last name must be at least 3 characters long.</span> } 
+              @if (hasErrors('last_name', 'minlength')) { <span class="text-danger">Last name must be at least 3 characters long.</span> }
             </div>
             <div class="col-md-4">
               <label for="birth_date" class="form-label">Birth Date</label>
