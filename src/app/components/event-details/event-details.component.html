@@ -1,29 +1,33 @@
 <div class="container mt-5">
-  <div class="card w-100" style="max-width: 800px;">
-    <img src="http://localhost:3000/uploads-event/{{event.photo}}" class="card-img-top" alt="Event Picture">
+  <div class="card w-100 event-card" style="max-width: 800px;">
+    <img src="http://localhost:3000/uploads-event/{{event?.photo}}" class="card-img-top" alt="Event Picture">
     <div class="card-body">
       @if (message) { <div class="alert alert-info mt-3">{{message}}</div> }
-      <h5 class="card-title">{{event.title}}</h5>
-      <p class="card-text">{{event.description}}</p>
-      <p class="card-text">Date: {{event.event_date | date:'mediumDate'}}</p>
-      <p class="card-text">Start Time: {{event.start_time}}</p>
-      <p class="card-text">End Time: {{event.end_time}}</p>
-      <p class="card-text">Location: {{event.location}}</p>
+      <h5 class="card-title">{{event?.title}}</h5>
+      <p class="card-text">{{event?.description}}</p>
+      <p class="card-text">Date: {{event?.event_date | date:'mediumDate'}}</p>
+      <p class="card-text">Start Time: {{event?.start_time}}</p>
+      <p class="card-text">End Time: {{event?.end_time}}</p>
+      <p class="card-text">Location: {{event?.location}}</p>
       <div class="d-flex justify-content-between">
         <div>
           @if (!isParticipating) {
-            <button (click)="participate()" class="btn btn-primary">Participate</button>
+            <button (click)="participate()" class="btn btn-custom-primary">
+              <i class="fas fa-hand-paper"></i> Participate</button>
           }
           @if (isParticipating) {
-            <button (click)="leave()" class="btn btn-warning">Leave</button>
+            <button (click)="leave()" class="btn btn-custom-primary">
+              <i class="fas fa-sign-out-alt"></i> Leave</button>
           }
 
           @if (participants.length > 0) {
-            <button (click)="openParticipantsModal()" class="btn btn-info ms-sm-2">View participants</button>
+            <button (click)="openParticipantsModal()" class="btn btn-custom-info ms-sm-2">
+              <i class="fas fa-users"></i> View participants</button>
           }
         </div>
         <div>
-          <button class="btn btn-secondary" routerLink="/events">Back</button>
+          <button class="btn btn-custom-primary" routerLink="/events">
+            <i class="fas fa-arrow-left"></i></button>
         </div>
 
       </div>
@@ -42,12 +46,15 @@
         </div>
         <div class="modal-body">
           <ul class="list-group">
-            <li *ngFor="let participant of participants" class="list-group-item">
-              <div class="d-flex align-items-center">
-                <img [src]="participant.profile_picture ? 'http://localhost:3000/uploads/' + participant.profile_picture : '/assets/facebookanonimo.jpg'" class="rounded-circle me-2" alt="Profile Picture" width="40" height="40">
-                {{ participant.first_name }} {{ participant.last_name }}
-              </div>
-            </li>
+            @for (participant of participants; track $index) {
+              <li  class="list-group-item">
+                <div class="d-flex align-items-center">
+                  <img [src]="participant['profile_picture'] ? 'http://localhost:3000/uploads/' + participant['profile_picture'] : '/assets/facebookanonimo.jpg'" class="rounded-circle me-2" alt="Profile Picture" width="40" height="40">
+                  {{ participant['first_name'] }} {{ participant['last_name'] }}
+                </div>
+              </li>
+            }
+
           </ul>
         </div>
       </div>

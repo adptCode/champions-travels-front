@@ -1,0 +1,74 @@
+/* Custom Event Details Styles */
+.event-card {
+  max-width: 800px;
+  margin: 0 auto; /* Center the card */
+  color: var(--primary-color) !important; /* Primary color for text */
+  border: #ffffff;
+}
+
+.card-title {
+  color: var(--secondary-color) !important;
+}
+
+.card-text {
+  color: var(--text-color) !important;
+}
+
+.btn-custom-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: #ffffff !important;
+}
+
+.btn-custom-primary:hover {
+  background-color: var(--btn-primary-hover) !important;
+  border-color: var(--btn-primary-hover) !important;
+}
+
+.btn-custom-secondary {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
+  color: #ffffff !important;
+}
+
+.btn-custom-secondary:hover {
+  background-color: var(--btn-secondary-hover) !important;
+  border-color: var(--btn-secondary-hover) !important;
+}
+
+.btn-custom-warning {
+  background-color: #ffc107 !important; /* Bootstrap warning color */
+  border-color: #ffc107 !important;
+  color: #343a40 !important;
+}
+
+.btn-custom-warning:hover {
+  background-color: #e0a800 !important;
+  border-color: #e0a800 !important;
+}
+
+.btn-custom-info {
+  background-color: #17a2b8 !important; /* Bootstrap info color */
+  border-color: #17a2b8 !important;
+  color: #ffffff !important;
+}
+
+.btn-custom-info:hover {
+  background-color: #138496 !important;
+  border-color: #138496 !important;
+}
+
+.modal-content {
+  background-color: var(--background-color) !important;
+  border-color: var(--secondary-color) !important;
+}
+
+.modal-header {
+  background-color: var(--secondary-color) !important;
+  color: white !important;
+}
+
+.list-group-item {
+  background-color: #ffffff !important;
+  color: var(--text-color) !important;
+}

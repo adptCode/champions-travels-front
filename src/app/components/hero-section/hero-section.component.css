@@ -1,0 +1,40 @@
+.hero-section {
+  background-color: #f8f9fa; /* Light background for contrast */
+  padding: 2rem;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section {
+  height: 80vh; /* Occupare l'intera altezza del viewport */
+}
+
+.hero-image {
+  max-width: 80%; /* Occupies 80% of the available space */
+  border-radius: 15px; /* Same rounded corners */
+}
+
+.hero-text {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: 'Georgia', serif;
+}
+
+.btn-custom-primary {
+  background-color: #ffcc00; /* Yellow from logo */
+  color: #ffffff; /* Blue from logo */
+  border: none;
+}
+
+.btn-custom-primary:hover {
+  background-color: #ffc107; /* Slightly darker yellow */
+}
+
+.about-section {
+  background-color: #ffffff; /* White background */
+  padding: 2rem;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+

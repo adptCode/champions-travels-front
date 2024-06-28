@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { EventService } from '../../../services/event.service';
 import { CommonModule } from '@angular/common';
+import { Event } from '../../../models/event';
 
 @Component({
   selector: 'app-admin-event-form',
@@ -16,7 +17,7 @@ export class AdminEventFormComponent {
 
 eventForm: FormGroup;
 eventId: number | null = null;
-event: any = {};
+event: Partial<Event> = {};
 eventPictureUrl!: string | null;
 defaultEventPictureUrl = '/assets/facebookanonimo.jpg';
 selectedFile: File | null = null;
@@ -54,7 +55,10 @@ loadEvent(id: number) {
   this.eventService.getEventById(id).subscribe(data => {
     console.log(data);
     this.event = data.data;
-    this.event.event_date = this.formatDate(this.event.event_date)
+    if (this.event.event_date) {
+      this.event.event_date = this.formatDate(this.event.event_date);
+    }
+    //this.event.event_date = this.formatDate(this.event.event_date)
     this.eventForm.patchValue(this.event);
     if(this.event.photo) {
       this.eventPictureUrl = `http://localhost:3000/uploads-event/${this.event.photo}`
@@ -142,13 +146,15 @@ submitForm() {
     this.eventForm.markAllAsTouched();
     return;
   }
-  const formData = new FormData();
+ /* const formData = new FormData();
   Object.keys(this.eventForm.controls).forEach(key => {
     formData.append(key, this.eventForm.get(key)?.value);
-  });
+  });*/
+
+  const eventData: Partial<Event> = this.eventForm.value;
 
   if (this.eventId) {
-    this.eventService.updateEvent(this.eventId, formData).subscribe({
+    this.eventService.updateEvent(this.eventId, eventData).subscribe({
       next: () => this.router.navigate(['/admin/events']),
       error: (error) => {
         this.message = 'Error updating event';
@@ -157,7 +163,7 @@ submitForm() {
       }
     });
   } else {
-    this.eventService.addEvent(formData).subscribe({
+    this.eventService.addEvent(eventData).subscribe({
       next: () => this.router.navigate(['/admin/events']),
       error: (error) => {
         this.message = 'Error creating event';

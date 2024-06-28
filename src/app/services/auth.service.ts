@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { AuthResponse, User } from '../models/user'
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class AuthService {
   private baseUrl = 'http://localhost:3000/auth';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   private isAdminSubject = new BehaviorSubject<boolean>(false);
-  private currentUserSubject = new BehaviorSubject<any>(null);
+  private currentUserSubject = new BehaviorSubject<User | null>(null);
 
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
   isAdmin$ = this.isAdminSubject.asObservable();
@@ -24,7 +25,7 @@ export class AuthService {
     this.checkAuthStatus();
   }
 
-  register(userData: any): Observable<any> {
+  register(userData: Partial<User>): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, userData).pipe(
       tap(() => {
         this.router.navigate(['/login']);
@@ -33,9 +34,9 @@ export class AuthService {
   }
 
 
-  login(credentials: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, credentials, { withCredentials: true }).pipe(
-      tap((response: any) => {
+  login(credentials: { email: string; password: string }): Observable<{ data: AuthResponse }> {
+    return this.http.post<{ data: AuthResponse }>(`${this.baseUrl}/login`, credentials, { withCredentials: true }).pipe(
+      tap((response: { data: AuthResponse }) => {
         const token = response.data.token;
         localStorage.setItem('authToken', token);
         localStorage.setItem('userName', response.data.user.first_name)
@@ -57,12 +58,12 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  forgotPassword(email: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/forgot-password`, email);
+  forgotPassword(email: { email: string }): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(`${this.baseUrl}/forgot-password`, email);
   }
 
-  changePassword(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/change-password`, data);
+  changePassword(data: { oldPassword: string; newPassword: string }): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(`${this.baseUrl}/change-password`, data);
   }
 
   checkAuthStatus(): void {
@@ -87,8 +88,8 @@ export class AuthService {
     return localStorage.getItem('authToken');
   }
 
-  getCurrentUser(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/me`, { withCredentials: true }).pipe(
+  getCurrentUser(): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/me`, { withCredentials: true }).pipe(
       tap(user => this.currentUserSubject.next(user))
     );
   }

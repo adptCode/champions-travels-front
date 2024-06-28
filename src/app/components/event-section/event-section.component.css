@@ -1,0 +1,29 @@
+/* Custom Event List Styles */
+.text-bg-custom-dark {
+  color: var(--primary-color) !important; /* Primary color for text */
+  border: #ffffff; /* Primary color for text */
+}
+
+.card-title {
+  color: var(--secondary-color) !important;
+}
+
+.card-text {
+  color: var(--text-color) !important;
+}
+
+.btn-custom-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: #ffffff !important;
+}
+
+.btn-custom-primary:hover {
+  background-color: var(--btn-primary-hover) !important;
+  border-color: var(--btn-primary-hover) !important;
+}
+
+.card-img-top {
+  height: 200px; /* Fixed height for image */
+  object-fit: cover;
+}

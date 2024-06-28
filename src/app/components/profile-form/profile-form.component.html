@@ -3,10 +3,10 @@
   <div class="row justify-content-center">
     <div class="col-lg-8">
 
-      <div class="card text-bg-dark my-3">
+      <div class="card text-bg-custom-dark my-3">
         <div class="row g-0">
-          <div class="card-header">Profile</div>
-          <div class="col-md-4 d-flex align-items-start justify-content-center mt-4">
+
+          <div class="col-md-4 d-flex align-items-start justify-content-center mt-4 ps-md-3">
             <img src="{{profilePictureUrl}}" alt="Profile Picture" class="img-thumbnail">
           </div>
           <div class="col-md-8">
@@ -59,18 +59,21 @@
                   </select>
                 </div>
 
-                <div class="col-12">
-                  <button class="btn btn-primary" type="submit">Update Profile</button>
+                <div class="col-12 d-grid gap-2 d-md-block">
+                  <button class="btn btn-custom-primary" type="submit">
+                    <i class="fas fa-user-edit"></i> Update Profile</button>
                 </div>
               </form>
 
               <div class="form-group mt-4">
-                <label for="file">Profile Picture</label>
+                <label class="form-label" for="file">Profile Picture</label>
                 <input type="file" id="file" (change)="onFileChanged($event)" class="form-control">
                 <div class="d-flex">
-                  <button (click)="onUpload()" class="btn btn-secondary mt-3">Upload Photo</button>
+                  <button (click)="onUpload()" class="btn btn-custom-primary mt-3">
+                    <i class="fas fa-upload"></i> Upload</button>
                   @if (profilePictureUrl !== '/assets/facebookanonimo.jpg') {
-                    <button (click)="deletePhoto()" class="btn btn-danger mt-3 ms-2">Delete Photo</button>
+                    <button (click)="deletePhoto()" class="btn btn-custom-primary mt-3 ms-2">
+                      <i class="fas fa-trash-alt"></i> Delete</button>
                   }
                 </div>
               </div>
@@ -80,12 +83,14 @@
                 <ul class="list-group">
                   <li *ngFor="let team of teams" class="list-group-item d-flex justify-content-between align-items-center">
                     {{ team }}
-                    <button (click)="removeTeam(team)" class="btn btn-sm btn-danger">Remove</button>
+                    <button (click)="removeTeam(team)" class="btn btn-sm btn-custom-primary">
+                      <i class="fas fa-times"></i></button>
                   </li>
                 </ul>
                 <div class="input-group mt-3">
                   <input type="text" class="form-control" [(ngModel)]="newTeam" placeholder="Add a team">
-                  <button (click)="addTeam()" class="btn btn-primary">Add</button>
+                  <button (click)="addTeam()" class="btn btn-custom-primary">
+                    <i class="fas fa-plus"></i></button>
                 </div>
               </div>
 

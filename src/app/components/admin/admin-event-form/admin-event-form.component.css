@@ -1,0 +1,11 @@
+.form-label {
+  color: var(--secondary-color) !important;
+}
+
+.form-control.is-invalid {
+  border-color: var(--secondary-color) !important;
+}
+
+.text-danger {
+  color: #ff6b6b !important; /* Red color for errors */
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Event } from '../../models/event';
 
 @Component({
   selector: 'app-event-section',
@@ -13,7 +14,7 @@ import { RouterLink } from '@angular/router';
 })
 export class EventSectionComponent implements OnInit{
 
-  events: any[] = [];
+  events: Event[] = [];
 
   constructor(private eventService: EventService, private datePipe: DatePipe) {}
 

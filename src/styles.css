@@ -1,5 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+@import './styles/variable.css';
+/*
 body {
   background-color: rgb(206, 190, 190) !important;
 }
+*/
 
+body {
+  background-color: var(--background-color) !important ;
+  color: var(--text-color) !important;
+}
+
+/* Personalizzazione dei componenti Bootstrap */
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--btn-primary-hover) !important;
+  border-color: var(--btn-primary-hover) !important;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--btn-secondary-hover) !important;
+  border-color: var(--btn-secondary-hover) !important;
+}
+
+.card {
+  border-color: var(--secondary-color) !important;
+}
+
+
+
+.modal-content {
+  background-color: var(--background-color) !important;
+  border-color: var(--secondary-color) !important;
+}
+
+.modal-header {
+  background-color: var(--secondary-color) !important;
+  color: white !important;
+}

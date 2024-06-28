@@ -3,6 +3,8 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { EventService } from '../../services/event.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { Event, EventParticipation } from '../../models/event';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-event-details',
@@ -13,11 +15,11 @@ import { AuthService } from '../../services/auth.service';
 })
 export class EventDetailsComponent implements OnInit {
 
-  event: any = {};
-  participants: any[] = [];
+  event: Event | null = null;
+  participants: EventParticipation[] = [];
   message: string = '';
   isParticipating: boolean = false;
-  currentUser: any = {};
+  currentUser: User | null = null;
   modal:boolean = false;
 
 
@@ -60,7 +62,7 @@ export class EventDetailsComponent implements OnInit {
         this.participants = data.data;
         console.log(this.participants)
         if (this.currentUser && this.currentUser.id) {
-          this.isParticipating = this.participants.some(participant => participant.id === this.currentUser.id);
+          this.isParticipating = this.participants.some(participant => participant.id === this.currentUser!.id);
         }
       },
       error: err => {
@@ -72,31 +74,40 @@ export class EventDetailsComponent implements OnInit {
 
   participate() {
 
-    this.eventService.participate(this.event.id).subscribe({
-      next: () => {
-        this.loadParticipants(this.event.id);
-        this.isParticipating = true;
-        this.message = 'Successfully registered for the event.';
-      },
-      error: err => {
-        console.error('Error participating in event', err);
-        this.message = 'Error registering for the event.';
-      }
-    });
+    if(this.event) {
+      this.eventService.participate(this.event.id).subscribe({
+        next: () => {
+          this.loadParticipants(this.event!.id);
+          this.isParticipating = true;
+          this.message = 'Successfully registered for the event.';
+        },
+        error: err => {
+          console.error('Error participating in event', err);
+          this.message = 'Error registering for the event.';
+        }
+      });
+
+    }
+
+
   }
 
   leave() {
-    this.eventService.leaveEvent(this.event.id).subscribe({
-      next: () => {
-        this.loadParticipants(this.event.id);
-        this.isParticipating = false;
-        this.message = 'Successfully unregistered from the event.';
-      },
-      error: err => {
-        console.error('Error leaving event', err);
-        this.message = 'Error unregistering from the event.';
-      }
-    });
+
+    if(this.event) {
+      this.eventService.leaveEvent(this.event.id).subscribe({
+        next: () => {
+          this.loadParticipants(this.event!.id);
+          this.isParticipating = false;
+          this.message = 'Successfully unregistered from the event.';
+        },
+        error: err => {
+          console.error('Error leaving event', err);
+          this.message = 'Error unregistering from the event.';
+        }
+      });
+    }
+
   }
 
   openParticipantsModal() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
   imports: [RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
+  
 })
 export class NavbarComponent implements OnInit {
   public isAuthenticated: boolean = false;

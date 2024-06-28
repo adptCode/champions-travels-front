@@ -5,6 +5,7 @@ import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { minimumAgeValidator } from '../../validators/age-validator';
 import { CountryService } from '../../services/country.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-profile-form',
@@ -19,7 +20,7 @@ export class ProfileFormComponent {
   message: string = '';
   alertType: string = '';
   selectedFile: File | null = null;
-  user: any = {};
+  user: User | null = null;
   profilePictureUrl!: string | null;
   countries: any[] = [];
   newTeam: string = '';

@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-custom-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Champions Travels</a>
+    <a class="navbar-brand">
+      FOOTBALL TRAVEL
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,17 +10,17 @@
       <div>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+            <a class="nav-link" aria-current="page" routerLink="/home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" routerLink="/profile">Profile</a>
+            <a class="nav-link " routerLink="/profile">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" routerLink="/events">Events</a>
+            <a class="nav-link " routerLink="/events">Events</a>
           </li>
           @if (isAdmin) {
             <li class="nav-item">
-              <a class="nav-link active" routerLink="/admin">Admin</a>
+              <a class="nav-link " routerLink="/admin">Admin</a>
             </li>
           }
         </ul>
@@ -26,13 +28,17 @@
       <div class="ms-auto">
         @if (!isAuthenticated) {
           <form>
-            <button class="btn btn-sm btn-outline-secondary" type="button" routerLink="/login">Login</button>
-            <button class="btn btn-sm btn-outline-secondary ms-1" type="button" routerLink="/register">Register</button>
+            <button class="btn btn-sm btn-custom-outline-secondary" type="button" routerLink="/login">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+            <button class="btn btn-sm btn-custom-outline-secondary ms-1" type="button" routerLink="/register">
+              <i class="fas fa-user-plus"></i> Register</button>
           </form>
         } @else {
           <form>
             <span class="navbar-text me-2">Hello {{userName}}</span>
-            <button class="btn btn-sm btn-outline-secondary" type="button" (click)="logout()">Logout</button>
+            <button class="btn btn-sm btn-custom-outline-secondary" type="button" (click)="logout()">
+              <i class="fas fa-sign-out-alt"></i>Logout</button>
           </form>
         }
 

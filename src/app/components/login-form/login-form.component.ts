@@ -10,6 +10,7 @@ import { Router, RouterLink } from '@angular/router';
 import { forbiddenPasswordValidator } from '../../validators/password-validator';
 import { AuthService } from '../../services/auth.service';
 
+
 @Component({
   selector: 'app-login-form',
   standalone: true,

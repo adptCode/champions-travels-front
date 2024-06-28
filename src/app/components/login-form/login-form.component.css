@@ -1,0 +1,52 @@
+/* Custom Login Styles */
+.text-bg-custom-dark {
+
+  color: var(--primary-color) !important; /* Primary color for text */
+  border: #ffffff;
+}
+
+
+.card-body {
+  background-color: #ffffff !important;
+  color: var(--text-color) !important;
+  border-radius: 20px;
+}
+
+.form-label {
+  color: var(--secondary-color) !important;
+}
+
+.form-control.is-invalid {
+  border-color: var(--secondary-color) !important;
+}
+
+.text-danger {
+  color: #ff6b6b !important; /* Red color for errors */
+}
+
+.btn-custom-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: #ffffff !important;
+}
+
+.btn-custom-primary:hover {
+  background-color: var(--btn-primary-hover) !important;
+  border-color: var(--btn-primary-hover) !important;
+}
+
+.btn-close {
+  color: #ffffff !important;
+}
+
+.btn-close:hover {
+  color: #ff6b6b !important;
+}
+
+.info a {
+  color: var(--primary-color) !important;
+}
+
+.info a:hover {
+  color: var(--btn-primary-hover) !important;
+}

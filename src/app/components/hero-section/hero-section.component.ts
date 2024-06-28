@@ -9,5 +9,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './hero-section.component.css'
 })
 export class HeroSectionComponent {
-
+  scrollToAbout(): void {
+    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+  }
 }

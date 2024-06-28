@@ -1,0 +1,33 @@
+/* Custom Navbar Styles */
+.bg-custom-dark {
+  background-color: #343a40; /* Dark background */
+}
+
+.navbar-brand img {
+  filter: brightness(1) invert(1); /* Ensure the logo is visible on dark background */
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--primary-color) !important; /* Primary color for active link */
+}
+
+.navbar-nav .nav-link {
+  color: var(--secondary-color) !important; /* Secondary color for links */
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--primary-color) !important; /* Hover color */
+}
+
+.btn-custom-outline-secondary {
+  color: var(--secondary-color) !important;
+}
+
+.btn-custom-outline-secondary:hover {
+  color: var(--btn-secondary-hover) !important;
+
+}
+
+.navbar-text {
+  color: var(--primary-color) !important; /* Color for the greeting text */
+}

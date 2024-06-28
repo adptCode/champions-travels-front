@@ -2,11 +2,13 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-lg-8">
-      <div class="card text-bg-light my-3">
+      <div class="card  my-3">
         <div class="row g-0">
           <div class="card-header d-flex justify-content-between">
             <div>{{ eventId ? 'Edit Event' : 'Add Event' }}</div>
-            <a routerLink='/admin/events'>Back to list</a>
+            <a routerLink='/admin/events'>
+              <i class="fas fa-arrow-left"></i>
+            </a>
           </div>
           <div class="col-md-4 d-flex align-items-start justify-content-center mt-4">
             <img [src]="eventPictureUrl" alt="Event Picture" class="img-thumbnail">
@@ -58,17 +60,20 @@
                 </div>
 
 
-                <div class="col-12">
-                  <button type="submit" class="btn btn-primary">{{ eventId ? 'Update' : 'Create' }}</button>
+                <div class="col-12 d-grid gap-2 d-md-block">
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fas" [ngClass]="eventId ? 'fa-save' : 'fa-plus-circle'"></i> {{ eventId ? 'Update' : 'Create' }}</button>
                 </div>
               </form>
 
               <div class="form-group mt-4">
-                <label for="file">Event Picture</label>
+                <label class="form-label" for="file">Event Picture</label>
                 <input type="file" id="file" (change)="onFileChange($event)" class="form-control">
                 <div class="d-flex">
-                  <button (click)="onUpload()" class="btn btn-secondary mt-3">Upload Photo</button>
-                  @if (eventPictureUrl !== '/assets/facebookanonimo.jpg') {<button (click)="deletePhoto()" class="btn btn-danger mt-3 ms-2">Delete Photo</button>}
+                  <button (click)="onUpload()" class="btn btn-primary mt-3">
+                    <i class="fas fa-upload"></i> </button>
+                  @if (eventPictureUrl !== '/assets/facebookanonimo.jpg') {<button (click)="deletePhoto()" class="btn btn-primary mt-3 ms-2">
+                    <i class="fas fa-trash-alt"></i> </button>}
                 </div>
               </div>
 

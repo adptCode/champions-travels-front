@@ -1,0 +1,52 @@
+
+
+<footer class="footer mt-5 py-3 bg-light">
+  <div class="container">
+    <div class="row">
+      <!-- Formulario di contatto -->
+      <div class="col-md-6 mb-3">
+        <div class="text-center">
+          <h5>Contact Us</h5>
+        </div>
+
+        <form (ngSubmit)="onSubmitContactForm()" [formGroup]="contactForm">
+          <div class="mb-3">
+            <label for="contactName" class="form-label">Name</label>
+            <input type="text" id="contactName" class="form-control" formControlName="name">
+          </div>
+          <div class="mb-3">
+            <label for="contactEmail" class="form-label">Email</label>
+            <input type="email" id="contactEmail" class="form-control" formControlName="email">
+          </div>
+          <div class="mb-3">
+            <label for="contactMessage" class="form-label">Message</label>
+            <textarea id="contactMessage" class="form-control" formControlName="message" rows="3"></textarea>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-custom-primary">
+              <i class="fas fa-paper-plane"></i> Send</button>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Recapiti social -->
+      <div class="col-md-6 d-flex flex-column align-items-center justify-content-center text-center">
+        <h5>Follow Us</h5>
+        <div class="social-icons mb-3">
+          <a href="#" class="btn btn-outline-secondary me-2">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="btn btn-outline-secondary me-2">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="btn btn-outline-secondary me-2">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <p class="mt-2">© 2024 adptCode. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
