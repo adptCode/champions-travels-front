@@ -72,3 +72,7 @@
   background-color: #ffffff !important;
   color: var(--text-color) !important;
 }
+
+.participant {
+  cursor: pointer;
+}

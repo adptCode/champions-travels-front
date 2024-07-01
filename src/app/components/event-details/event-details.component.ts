@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { EventService } from '../../services/event.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
@@ -26,7 +26,8 @@ export class EventDetailsComponent implements OnInit {
   constructor(
     private eventService: EventService,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -117,6 +118,10 @@ export class EventDetailsComponent implements OnInit {
 
   closeModal() {
     this.modal = false;
+  }
+
+  viewUserProfile(participantId: number) {
+    this.router.navigate([`/user/${participantId}`]);
   }
 
 

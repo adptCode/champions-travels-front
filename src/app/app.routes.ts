@@ -10,16 +10,18 @@ import { adminGuard } from './guards/admin.guard';
 import { AdminEventListComponent } from './components/admin/admin-event-list/admin-event-list.component';
 import { AdminEventFormComponent } from './components/admin/admin-event-form/admin-event-form.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 export const routes: Routes = [
   {path: 'home', component: HomePageComponent},
   {path: 'profile', component: ProfilePageComponent, canActivate: [authGuard]},
   {path: 'events', component: EventsPageComponent, canActivate: [authGuard]},
-  { path: 'events/:id', component: EventDetailsComponent, canActivate: [authGuard]},
+  {path: 'events/:id', component: EventDetailsComponent, canActivate: [authGuard]},
   {path: 'admin', component: AdminPageComponent, canActivate: [authGuard, adminGuard]},
   {path: 'admin/events', component: AdminEventListComponent, canActivate: [authGuard, adminGuard]},
-  { path: 'admin/event-add', component: AdminEventFormComponent, canActivate: [authGuard, adminGuard] },
+  {path: 'admin/event-add', component: AdminEventFormComponent, canActivate: [authGuard, adminGuard] },
   {path: 'admin/event-edit/:id', component: AdminEventFormComponent, canActivate: [authGuard, adminGuard]},
+  { path: 'user/:id', component: UserProfileComponent, canActivate: [authGuard]},
   {path: 'register', component: RegisterPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}

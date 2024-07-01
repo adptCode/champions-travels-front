@@ -50,7 +50,8 @@
               <li  class="list-group-item">
                 <div class="d-flex align-items-center">
                   <img [src]="participant['profile_picture'] ? 'http://localhost:3000/uploads/' + participant['profile_picture'] : '/assets/facebookanonimo.jpg'" class="rounded-circle me-2" alt="Profile Picture" width="40" height="40">
-                  {{ participant['first_name'] }} {{ participant['last_name'] }}
+                  <span (click)="viewUserProfile(participant.id)" class="participant">{{ participant['first_name'] }} {{ participant['last_name'] }}</span>
+
                 </div>
               </li>
             }

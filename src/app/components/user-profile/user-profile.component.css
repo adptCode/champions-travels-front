@@ -1,0 +1,14 @@
+.card-body {
+  background-color: #ffffff !important;
+  color: var(--text-color) !important;
+  border-radius: 20px;
+
+}
+
+.profile-card {
+  border: #ffffff;
+}
+
+h5 {
+  color: var(--secondary-color) !important;
+}
