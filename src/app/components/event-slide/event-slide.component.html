@@ -1,0 +1,32 @@
+@if (events.length > 0) {
+  <div class="container mt-3">
+    <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        @for (event of events; track $index) {
+          <div  [ngClass]="{'carousel-item': true,  'active': $index === 0}" class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="card h-100 text-bg-custom-dark">
+              <img [src]="'http://localhost:3000/uploads-event/' + event.photo" class="d-block w-100" alt="Event Image">
+            <div class="carousel-caption  d-md-block">
+              <h5>{{ event.title }}</h5>
+
+              <button class="btn btn-custom-primary" (click)="navigateToEvent(event.id)">
+                View Details
+              </button>
+            </div>
+
+            </div>
+          </div>
+        }
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+}
+

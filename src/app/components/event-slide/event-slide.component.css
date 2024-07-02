@@ -1,0 +1,28 @@
+.carousel-inner img {
+  height: 500px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.btn-custom-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: #ffffff !important;
+}
+
+.btn-custom-primary:hover {
+  background-color: var(--btn-primary-hover) !important;
+  border-color: var(--btn-primary-hover) !important;
+}
+
+.text-bg-custom-dark {
+  background-color: var(--background-color) !important;
+  color: var(--primary-color) !important; /* Primary color for text */
+  border: #ffffff; /* Primary color for text */
+}
