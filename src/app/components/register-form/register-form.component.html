@@ -18,16 +18,16 @@
               <input type="text" class="form-control" id="first_name" formControlName="first_name"
               [ngClass]="{'is-invalid': hasErrors('first_name', 'required') || hasErrors('first_name', 'pattern') || hasErrors('first_name', 'minlength')}">
               @if (hasErrors('first_name', 'required')) { <span class="text-danger">First name is required.</span> }
-              @if (hasErrors('first_name', 'pattern')) { <span class="text-danger">Invalid first name format.</span> }
-              @if (hasErrors('first_name', 'minlength')) { <span class="text-danger">First name must be at least 3 characters long.</span> }
+              @if (hasErrors('first_name', 'pattern')) { <span class="text-danger"> Invalid first name format.</span> }
+              @if (hasErrors('first_name', 'minlength')) { <span class="text-danger"> First name must be at least 3 characters long.</span> }
             </div>
             <div class="col-md-4">
               <label for="last_name" class="form-label">Last name</label>
               <input type="text" class="form-control" id="last_name" formControlName="last_name"
               [ngClass]="{'is-invalid': hasErrors('last_name', 'required') || hasErrors('last_name', 'pattern') || hasErrors('last_name', 'minlength')}">
               @if (hasErrors('last_name', 'required')) { <span class="text-danger">Last name is required.</span> }
-              @if (hasErrors('last_name', 'pattern')) { <span class="text-danger">Invalid last name format.</span> }
-              @if (hasErrors('last_name', 'minlength')) { <span class="text-danger">Last name must be at least 3 characters long.</span> }
+              @if (hasErrors('last_name', 'pattern')) { <span class="text-danger"> Invalid last name format.</span> }
+              @if (hasErrors('last_name', 'minlength')) { <span class="text-danger"> Last name must be at least 3 characters long.</span> }
             </div>
             <div class="col-md-4">
               <label for="birth_date" class="form-label">Birth Date</label>
@@ -50,6 +50,14 @@
               @if (hasErrors('password', 'required')) { <span class="text-danger">Password is required.</span> }
               @if (hasErrors('password', 'minlength')) { <span class="text-danger">Password must be at least 5 characters long.</span> }
               @if (hasErrors('password', 'forbiddenPassword')) { <span class="text-danger">Password is too basic.</span> }
+            </div>
+            <div class="col-md-6">
+              <label for="confirm_password" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="confirm_password" formControlName="confirm_password"
+              [ngClass]="{'is-invalid': hasErrors('confirm_password', 'required') || hasErrors('confirm_password', 'minlength') || hasErrors('confirm_password', 'passwordMismatch')}">
+              @if (hasErrors('confirm_password', 'required')) { <span class="text-danger">Confirm Password is required.</span> }
+              @if (hasErrors('confirm_password', 'minlength')) { <span class="text-danger">Confirm Password must be at least 5 characters long.</span> }
+              @if (hasErrors('confirm_password', 'passwordMismatch')) { <span class="text-danger">Passwords do not match.</span> }
             </div>
             <div class="col-12 d-grid gap-2 d-md-block">
               <button class="btn btn-custom-primary" type="submit">

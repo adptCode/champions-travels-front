@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { minimumAgeValidator } from '../../validators/age-validator';
 import { forbiddenPasswordValidator } from '../../validators/password-validator';
+import { passwordMatchValidator } from '../../validators/password-match.validator';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -55,6 +56,7 @@ export class RegisterFormComponent {
           forbiddenPasswordValidator('123456'),
         ],
       ],
+      confirm_password: ['', [Validators.required, Validators.minLength(5), passwordMatchValidator('password')]]
     });
   }
 
@@ -91,7 +93,7 @@ export class RegisterFormComponent {
           }
         },
       });
-    
+
   }
 
   closeAlert() {
