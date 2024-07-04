@@ -22,7 +22,7 @@ export class FooterComponent {
   onSubmitContactForm() {
     if (this.contactForm.valid) {
       console.log('Contact Form Data:', this.contactForm.value);
-      // Implementa la logica per l'invio del messaggio
+      
     } else {
       console.log('Contact Form is invalid');
     }

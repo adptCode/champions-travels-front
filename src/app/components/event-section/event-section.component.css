@@ -1,7 +1,7 @@
-/* Custom Event List Styles */
+
 .text-bg-custom-dark {
-  color: var(--primary-color) !important; /* Primary color for text */
-  border: #ffffff; /* Primary color for text */
+  color: var(--primary-color) !important;
+  border: #ffffff;
 }
 
 .card-title {
@@ -24,6 +24,6 @@
 }
 
 .card-img-top {
-  height: 200px; /* Fixed height for image */
+  height: 200px; 
   object-fit: cover;
 }

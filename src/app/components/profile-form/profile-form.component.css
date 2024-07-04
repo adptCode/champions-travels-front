@@ -1,6 +1,6 @@
-/* Custom Profile Styles */
+
 .text-bg-custom-dark {
-  color: var(--primary-color) !important; /* Primary color for text */
+  color: var(--primary-color) !important;
   border: #ffffff;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .text-danger {
-  color: #ff6b6b !important; /* Red color for errors */
+  color: #ff6b6b !important; 
 }
 
 .btn-custom-primary {

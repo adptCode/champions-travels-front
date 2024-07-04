@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #FFD700 !important; /* Giallo */
-  --secondary-color: #1E90FF !important; /* Azzurro */
+  --primary-color: #FFD700 !important;
+  --secondary-color: #1E90FF !important; 
   --background-color: #EDE7DC !important;
   --text-color: #343a40 !important;
   --btn-primary-hover: #E6C200 !important;

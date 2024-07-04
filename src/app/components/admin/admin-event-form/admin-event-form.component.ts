@@ -146,10 +146,6 @@ submitForm() {
     this.eventForm.markAllAsTouched();
     return;
   }
- /* const formData = new FormData();
-  Object.keys(this.eventForm.controls).forEach(key => {
-    formData.append(key, this.eventForm.get(key)?.value);
-  });*/
 
   const eventData: Partial<Event> = this.eventForm.value;
 

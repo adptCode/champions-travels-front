@@ -1,17 +1,17 @@
 .hero-section {
-  background-color: #f8f9fa; /* Light background for contrast */
+  background-color: #f8f9fa;
   padding: 2rem;
-  border-radius: 15px; /* Rounded corners */
+  border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .hero-section {
-  height: 80vh; /* Occupare l'intera altezza del viewport */
+  height: 80vh;
 }
 
 .hero-image {
-  max-width: 80%; /* Occupies 80% of the available space */
-  border-radius: 15px; /* Same rounded corners */
+  max-width: 80%;
+  border-radius: 15px;
 }
 
 .hero-text {
@@ -22,19 +22,19 @@
 }
 
 .btn-custom-primary {
-  background-color: #ffcc00; /* Yellow from logo */
-  color: #ffffff; /* Blue from logo */
+  background-color: #ffcc00;
+  color: #ffffff;
   border: none;
 }
 
 .btn-custom-primary:hover {
-  background-color: #ffc107; /* Slightly darker yellow */
+  background-color: #ffc107;
 }
 
 .about-section {
-  background-color: #ffffff; /* White background */
+  background-color: #ffffff;
   padding: 2rem;
-  border-radius: 15px; /* Rounded corners */
+  border-radius: 15px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 

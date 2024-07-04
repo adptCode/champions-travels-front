@@ -1,8 +1,8 @@
-/* Custom Event Details Styles */
+
 .event-card {
   max-width: 800px;
-  margin: 0 auto; /* Center the card */
-  color: var(--primary-color) !important; /* Primary color for text */
+  margin: 0 auto;
+  color: var(--primary-color) !important;
   border: #ffffff;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .btn-custom-warning {
-  background-color: #ffc107 !important; /* Bootstrap warning color */
+  background-color: #ffc107 !important;
   border-color: #ffc107 !important;
   color: #343a40 !important;
 }
@@ -48,7 +48,7 @@
 }
 
 .btn-custom-info {
-  background-color: #17a2b8 !important; /* Bootstrap info color */
+  background-color: #17a2b8 !important; 
   border-color: #17a2b8 !important;
   color: #ffffff !important;
 }

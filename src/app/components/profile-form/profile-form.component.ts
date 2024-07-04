@@ -138,11 +138,11 @@ export class ProfileFormComponent {
         if (response.data && response.data.profile_picture) {
           this.profilePictureUrl = `http://localhost:3000/uploads/${response.data.profile_picture}`;
         } else {
-          this.profilePictureUrl = '/assets/facebookanonimo.jpg'; // Default picture if upload fails
+          this.profilePictureUrl = '/assets/facebookanonimo.jpg';
         }
         this.message = 'Photo uploaded successfully';
         this.alertType = 'success';
-        this.selectedFile = null; // Reset the selected file
+        this.selectedFile = null;
       },
       error: (error) => {
         this.message = 'Error uploading photo';
@@ -162,7 +162,7 @@ export class ProfileFormComponent {
       next: (response) => {
         this.message = 'Photo deleted successfully';
         this.alertType = 'success';
-        this.profilePictureUrl = '/assets/facebookanonimo.jpg'; // Set a default profile picture
+        this.profilePictureUrl = '/assets/facebookanonimo.jpg'; 
       },
       error: (error) => {
         this.message = 'Error deleting photo';

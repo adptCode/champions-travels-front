@@ -1,7 +1,7 @@
 .footer {
   background-color: var(--background-color) !important ;
   padding: 2rem 0;
-  border-top: 2px solid #ffcc00; /* Yellow border for a distinct separation */
+  border-top: 2px solid #ffcc00;
 }
 
 .footer h5 {
@@ -10,27 +10,27 @@
 }
 
 .footer .form-label {
-  color: var(--secondary-color); /* Blue color for labels */
+  color: var(--secondary-color);
 }
 
 .footer .btn-custom-primary {
-  background-color: #ffcc00 !important; /* Yellow from logo */
-  color: #ffffff !important; /* Blue from logo */
+  background-color: #ffcc00 !important;
+  color: #ffffff !important;
   border: none !important;
 }
 
 .footer .btn-custom-primary:hover {
-  background-color: #ffc107 !important; /* Slightly darker yellow */
+  background-color: #ffc107 !important;
 }
 
 .footer .social-icons .btn {
-  color: var(--secondary-color) !important; /* Blue for social icons */
-  border-color: var(--secondary-color) !important; /* Border color for social icons */
+  color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
 }
 
 .footer .social-icons .btn:hover {
-  background-color: var(--secondary-color) !important; /* Blue background on hover */
-  color: #ffcc00 !important; /* Yellow icons on hover */
+  background-color: var(--secondary-color) !important;
+  color: #ffcc00 !important; 
 }
 
 .footer p {
