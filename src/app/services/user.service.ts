@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Preference, User } from '../models/user';
 import { EventParticipation } from '../models/event';
+import { environment } from '../environments/environment';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { EventParticipation } from '../models/event';
 })
 export class UserService {
 
-  private baseUrl = 'http://localhost:3000/user';
+  private baseUrl = `${environment.apiUrl}/user`;
 
   constructor(private http: HttpClient) { }
 
