@@ -40,6 +40,7 @@ export class AuthService {
       tap((response: { data: AuthResponse }) => {
         const token = response.data.token;
         localStorage.setItem('authToken', token);
+        console.log('Token:', token);
         localStorage.setItem('userName', response.data.user.first_name)
         this.setAuthStatus(token);
         this.currentUserSubject.next(response.data.user);
