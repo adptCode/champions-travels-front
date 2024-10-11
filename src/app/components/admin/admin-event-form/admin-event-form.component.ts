@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { EventService } from '../../../services/event.service';
 import { CommonModule } from '@angular/common';
 import { Event } from '../../../models/event';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-admin-event-form',
@@ -14,7 +15,7 @@ import { Event } from '../../../models/event';
 })
 export class AdminEventFormComponent {
 
-
+private baseUrl = `${environment.apiUrl}`;
 eventForm: FormGroup;
 eventId: number | null = null;
 event: Partial<Event> = {};
@@ -61,7 +62,7 @@ loadEvent(id: number) {
     //this.event.event_date = this.formatDate(this.event.event_date)
     this.eventForm.patchValue(this.event);
     if(this.event.photo) {
-      this.eventPictureUrl = `http://localhost:3000/uploads-event/${this.event.photo}`
+      this.eventPictureUrl = `${this.baseUrl}/${this.event.photo}`
     } else {
       this.eventPictureUrl = this.defaultEventPictureUrl;
     }
@@ -102,7 +103,7 @@ onUpload() {
     this.eventService.uploadPhoto(this.eventId, formData).subscribe({
       next: (response) => {
         if (response.data && response.data.photo) {
-          this.eventPictureUrl = `http://localhost:3000/uploads-event/${response.data.photo}`;
+          this.eventPictureUrl = `${this.baseUrl}/uploads-event/${response.data.photo}`;
         } else {
           this.eventPictureUrl = '/assets/facebookanonimo.jpg';
         }

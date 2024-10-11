@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { minimumAgeValidator } from '../../validators/age-validator';
 import { CountryService } from '../../services/country.service';
 import { User } from '../../models/user';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-profile-form',
@@ -15,6 +16,8 @@ import { User } from '../../models/user';
   styleUrl: './profile-form.component.css'
 })
 export class ProfileFormComponent {
+
+  private baseUrl = `${environment.apiUrl}`;
 
   profileForm!: FormGroup;
   message: string = '';
@@ -136,7 +139,7 @@ export class ProfileFormComponent {
     this.userService.uploadPhoto(this.selectedFile).subscribe({
       next: (response) => {
         if (response.data && response.data.profile_picture) {
-          this.profilePictureUrl = `http://localhost:3000/uploads/${response.data.profile_picture}`;
+          this.profilePictureUrl = `${this.baseUrl}/uploads/${response.data.profile_picture}`;
         } else {
           this.profilePictureUrl = '/assets/facebookanonimo.jpg';
         }
@@ -162,7 +165,7 @@ export class ProfileFormComponent {
       next: (response) => {
         this.message = 'Photo deleted successfully';
         this.alertType = 'success';
-        this.profilePictureUrl = '/assets/facebookanonimo.jpg'; 
+        this.profilePictureUrl = '/assets/facebookanonimo.jpg';
       },
       error: (error) => {
         this.message = 'Error deleting photo';
