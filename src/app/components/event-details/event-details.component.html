@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <div class="card w-100 event-card" style="max-width: 800px;">
-    <img src="http://localhost:3000/uploads-event/{{event?.photo}}" class="card-img-top" alt="Event Picture">
+    <img src="{{baseUrl}}/uploads-event/{{event?.photo}}" class="card-img-top" alt="Event Picture">
     <div class="card-body">
       @if (message) { <div class="alert alert-info mt-3">{{message}}</div> }
       <h5 class="card-title">{{event?.title}}</h5>
@@ -49,7 +49,7 @@
             @for (participant of participants; track $index) {
               <li  class="list-group-item">
                 <div class="d-flex align-items-center">
-                  <img [src]="participant['profile_picture'] ? 'http://localhost:3000/uploads/' + participant['profile_picture'] : '/assets/facebookanonimo.jpg'" class="rounded-circle me-2" alt="Profile Picture" width="40" height="40">
+                  <img [src]="participant['profile_picture'] ? baseUrl + '/uploads/' + participant['profile_picture'] : '/assets/facebookanonimo.jpg'" class="rounded-circle me-2" alt="Profile Picture" width="40" height="40">
                   <span (click)="viewUserProfile(participant.id)" class="participant">{{ participant['first_name'] }} {{ participant['last_name'] }}</span>
 
                 </div>

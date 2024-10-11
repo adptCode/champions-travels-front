@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { EventService } from '../../services/event.service';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-event-slide',
@@ -13,6 +14,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './event-slide.component.css'
 })
 export class EventSlideComponent implements OnInit{
+
+  public readonly baseUrl = environment.apiUrl;
 
   events: Event[] = [];
   isAuthenticated: boolean = false;

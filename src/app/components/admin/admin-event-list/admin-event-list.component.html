@@ -20,7 +20,7 @@
       <tbody>
         @for (event of events; track $index) {
           <tr>
-            <td><img [src]="event.photo ? 'http://localhost:3000/uploads-event/' + event.photo : '/assets/facebookanonimo.jpg'" alt="{{ event.title }}" width="100"></td>
+            <td><img [src]="event.photo ? baseUrl + '/uploads-event/' + event.photo : '/assets/facebookanonimo.jpg'" alt="{{ event.title }}" width="100"></td>
             <td>{{ event.title }}</td>
             <td>{{ event.description }}</td>
             <td>{{ event.event_date | date }}</td>

@@ -3,6 +3,7 @@ import { EventService } from '../../services/event.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Event } from '../../models/event';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-event-section',
@@ -13,6 +14,8 @@ import { Event } from '../../models/event';
   providers: [DatePipe]
 })
 export class EventSectionComponent implements OnInit{
+
+  public readonly baseUrl = environment.apiUrl;
 
   events: Event[] = [];
 

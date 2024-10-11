@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Event, EventParticipation } from '../../models/event';
 import { User } from '../../models/user';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-event-details',
@@ -14,6 +15,8 @@ import { User } from '../../models/user';
   styleUrl: './event-details.component.css'
 })
 export class EventDetailsComponent implements OnInit {
+
+  public readonly baseUrl = environment.apiUrl
 
   event: Event | null = null;
   participants: EventParticipation[] = [];
