@@ -41,7 +41,7 @@ export class AuthService {
         const token = response.data.token;
         localStorage.setItem('authToken', token);
         console.log('Token:', token);
-        localStorage.setItem('userName', response.data.user.first_name)
+        localStorage.setItem('userName', response.data.user.first_name);
         this.setAuthStatus(token);
         this.currentUserSubject.next(response.data.user);
         const redirectUrl = localStorage.getItem('redirectUrl') || '/home';

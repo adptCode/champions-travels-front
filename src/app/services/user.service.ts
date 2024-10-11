@@ -17,7 +17,7 @@ export class UserService {
 
   getUser(): Observable<{ data: User }> {
     console.log("Fetching user data");
-    return this.http.get<{ data: User }>(this.baseUrl, { withCredentials: true });
+    return this.http.get<{ data: User }>(`${this.baseUrl}`, { withCredentials: true });
   }
 
   getUserById(id: number): Observable<{ data: User }> {

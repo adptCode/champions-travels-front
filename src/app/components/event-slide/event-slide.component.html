@@ -5,7 +5,7 @@
         @for (event of events; track $index) {
           <div  [ngClass]="{'carousel-item': true,  'active': $index === 0}" class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 text-bg-custom-dark">
-              <img [src]="baseUrl + '/uploads-event/' + event.photo" class="d-block w-100" alt="Event Image">
+              <img [src]=" baseUrl + '/uploads-event/' + event.photo " class="d-block w-100" alt="Event Image">
             <div class="carousel-caption  d-md-block">
               <h5>{{ event.title }}</h5>
 
