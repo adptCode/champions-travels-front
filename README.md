@@ -1,27 +1,48 @@
-# ChampionsTravelsFront
+🌍 Champions Travels - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+Champions Travels is a web application that allows you to organize trips and itineraries related to the world's greatest sports events! From selecting destinations to planning activities during the event, everything is designed to create a unique experience.
 
-## Development server
+🚀 Live Demo
+Check out the live demo here: Champions Travels Demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+🛠️ Technologies Used
+Frontend: Angular
+Styling: Bootstrap
+Icons: FontAwesome
+Backend: Node.js, Express, Sequelize - Check the backend repository here
+📋 Features
+Filter and search sports events and destinations.
+Custom itinerary management.
+Responsive and user-friendly interface.
+Full backend integration for data management.
+🖼️ Preview
 
-## Code scaffolding
+🔧 Frontend Setup
+1. Clone the repository
+bash
+Copiar código
+git clone https://github.com/adptCode/champions-travels-front.git
+2. Install dependencies
+bash
+Copiar código
+cd champions-travels-front
+npm install
+3. Run the development server
+bash
+Copiar código
+npm start
+The app will be running at http://localhost:4200.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+⚙️ Backend Setup
+For configuring and running the backend, visit the repository: Champions Travels Backend.
 
-## Build
+You'll find detailed instructions on how to import the database file, set up environment variables, and start the server.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+📦 Deployment
+This application is deployed on Netlify and can be accessed at: Champions Travels Demo.
 
-## Running unit tests
+🤝 Contributions
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+📝 License
+This project is licensed under the MIT License. See the LICENSE file for more details.
