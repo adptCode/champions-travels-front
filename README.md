@@ -20,7 +20,7 @@ Check the backend repository here:
 https://github.com/adptCode/champions-travels-back
 
 
-## Features
+## 📋 Features
 
 - Filter and search for sports events and destinations.
 - Custom itinerary management.
