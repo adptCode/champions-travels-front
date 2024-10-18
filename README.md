@@ -1,9 +1,9 @@
-🌍 Champions Travels - Frontend
+# 🌍 Champions Travels - Frontend
 
-Champions Travels is a web application designed to help users organize trips and itineraries for major sports events. From selecting destinations to planning activities, it delivers a comprehensive travel experience.
+### Champions Travels is a web application designed to help users organize trips and itineraries for major sports events. From selecting destinations to planning activities, it delivers a comprehensive travel experience.
 
-🚀 Live Demo
-Champions Travels Demo
+## 🚀 Live Demo
+# Champions Travels Demo
 
 🛠️ Technologies Used
 Frontend: Angular
