@@ -20,17 +20,17 @@ Full backend integration for data management.
 Replace the link below with the actual path to your screenshot:
 
 🔧 Frontend Setup
-Clone the repository
-bash
+1. Clone the repository
+sh
 Copiar código
 git clone https://github.com/adptCode/champions-travels-front.git
-Install dependencies
-bash
+2. Install dependencies
+sh
 Copiar código
 cd champions-travels-front
 npm install
-Run the development server
-bash
+3. Run the development server
+sh
 Copiar código
 npm start
 The app will be running at http://localhost:4200.
