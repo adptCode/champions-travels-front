@@ -1,25 +1,27 @@
-🌍 Champions Travels - Frontend
+# 🌍 Champions Travels - Frontend
 
-Champions Travels is a web application designed to help users organize trips and itineraries for major sports events. From selecting destinations to planning activities, it delivers a comprehensive travel experience.
+### Champions Travels is a web application designed to help users organize trips and itineraries for major sports events. From selecting destinations to planning activities, it delivers a comprehensive travel experience.
 
-🚀 Live Demo
-Champions Travels Demo
+## 🚀 Live Demo
+### Champions Travels Demo
 
-🛠️ Technologies Used
-Frontend: Angular
-Styling: Bootstrap
+## 🛠️ Technologies Used
+. Frontend: Angular
+. Styling: Bootstrap
 Icons: FontAwesome
 Backend: Node.js, Express, Sequelize
 Check the backend repository here.
-📋 Features
+
+## 📋 Features
 Filter and search for sports events and destinations.
 Custom itinerary management.
 Responsive, intuitive user interface.
 Full backend integration for data management.
-🖼️ Preview
+
+## 🖼️ Preview
 Replace the link below with the actual path to your screenshot:
 
-🔧 Frontend Setup
+## 🔧 Frontend Setup
 1. Clone the repository
 sh
 Copiar código
@@ -35,17 +37,17 @@ Copiar código
 npm start
 The app will be running at http://localhost:4200.
 
-⚙️ Backend Setup
+## ⚙️ Backend Setup
 To configure and run the backend, please visit the repository: Champions Travels Backend.
 
 You'll find detailed instructions to import the database, set up environment variables, and run the server.
 
-📦 Deployment
+## 📦 Deployment
 The frontend is deployed on Netlify.
 Check it out live here: Champions Travels Demo.
 
-🤝 Contributions
+## 🤝 Contributions
 Pull requests are welcome! For major changes, please open an issue to discuss the proposed changes before proceeding.
 
-📝 License
+## 📝 License
 This project is licensed under the MIT License. See the LICENSE file for more details.
