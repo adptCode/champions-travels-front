@@ -7,7 +7,7 @@
           <div>
             <h5>{{ user.first_name }} {{ user.last_name }}</h5>
             <p>Birth date: {{user.birth_date}}</p>
-            <p>Email: {{ user.email }}</p>
+            <!-- <p>Email: {{ user.email }}</p> -->
             @if (user.city) {<p>City: {{ user.city }}</p>}
             @if (user.country) {<p>Country: {{ user.country }}</p>}
             @if (user.preferences!.length > 0) {
