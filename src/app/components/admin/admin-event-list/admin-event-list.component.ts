@@ -3,7 +3,7 @@ import { EventService } from '../../../services/event.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Event } from '../../../models/event';
-import { environment } from '../../../../environments/environment';
+// import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-admin-event-list',
@@ -14,9 +14,10 @@ import { environment } from '../../../../environments/environment';
 })
 export class AdminEventListComponent implements OnInit {
 
-  public readonly baseUrl = environment.apiUrl;
+  // public readonly baseUrl = environment.apiUrl;
 
   events: Event[] = [];
+  defaultEventPictureUrl: string = '/assets/facebookanonimo.jpg';
 
   constructor(private eventService: EventService) { }
 

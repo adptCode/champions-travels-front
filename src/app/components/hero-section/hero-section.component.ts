@@ -7,7 +7,7 @@ import { EventSlideComponent } from "../event-slide/event-slide.component";
     standalone: true,
     templateUrl: './hero-section.component.html',
     styleUrl: './hero-section.component.css',
-    imports: [RouterLink, EventSlideComponent]
+    imports: [EventSlideComponent]
 })
 export class HeroSectionComponent {
   scrollToAbout(): void {
