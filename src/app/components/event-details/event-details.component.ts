@@ -24,6 +24,8 @@ export class EventDetailsComponent implements OnInit {
   isParticipating: boolean = false;
   currentUser: User | null = null;
   modal:boolean = false;
+  defaultProfilePictureUrl: string = '/assets/facebookanonimo.jpg';
+  defaultEventPictureUrl: string = '/assets/facebookanonimo.jpg';
 
 
   constructor(

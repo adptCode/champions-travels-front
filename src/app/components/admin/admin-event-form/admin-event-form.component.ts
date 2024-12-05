@@ -64,7 +64,7 @@ loadEvent(id: number) {
     this.eventForm.patchValue(this.event);
 
     this.eventPictureUrl = this.event.photo ? this.event.photo : this.defaultEventPictureUrl;
-    
+
   });
 }
 
@@ -104,7 +104,7 @@ onUpload() {
         if (response.data && response.data.photo) {
           this.eventPictureUrl = response.data.photo;
         } else {
-          this.eventPictureUrl = '/assets/facebookanonimo.jpg';
+          this.eventPictureUrl = this.defaultEventPictureUrl;
         }
         this.message = 'Photo uploaded successfully';
         this.alertType = 'success';

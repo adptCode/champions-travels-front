@@ -19,6 +19,7 @@ export class EventSlideComponent implements OnInit{
 
   events: Event[] = [];
   isAuthenticated: boolean = false;
+  defaultEventPictureUrl: string = '/assets/facebookanonimo.jpg';
 
   constructor(
     private eventService: EventService,
