@@ -20,7 +20,7 @@ eventForm: FormGroup;
 eventId: number | null = null;
 event: Partial<Event> = {};
 eventPictureUrl!: string | null;
-defaultEventPictureUrl = '/assets/facebookanonimo.jpg';
+defaultEventPictureUrl = '/assets/default-event.png';
 selectedFile: File | null = null;
 message: string = '';
 alertType: string = '';

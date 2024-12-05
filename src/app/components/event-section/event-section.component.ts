@@ -18,7 +18,7 @@ export class EventSectionComponent implements OnInit{
   public readonly baseUrl = environment.apiUrl;
 
   events: Event[] = [];
-  defaultEventPictureUrl: string = '/assets/facebookanonimo.jpg';
+  defaultEventPictureUrl: string = '/assets/default-event.png';
 
   constructor(private eventService: EventService, private datePipe: DatePipe) {}
 
