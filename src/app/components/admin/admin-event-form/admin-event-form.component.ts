@@ -56,16 +56,15 @@ loadEvent(id: number) {
   this.eventService.getEventById(id).subscribe(data => {
     console.log(data);
     this.event = data.data;
+
     if (this.event.event_date) {
       this.event.event_date = this.formatDate(this.event.event_date);
     }
-    //this.event.event_date = this.formatDate(this.event.event_date)
+
     this.eventForm.patchValue(this.event);
-    if(this.event.photo) {
-      this.eventPictureUrl = `${this.baseUrl}/${this.event.photo}`
-    } else {
-      this.eventPictureUrl = this.defaultEventPictureUrl;
-    }
+
+    this.eventPictureUrl = this.event.photo ? this.event.photo : this.defaultEventPictureUrl;
+    
   });
 }
 
@@ -97,13 +96,13 @@ onUpload() {
   }
 
   const formData = new FormData();
-  formData.append('photo', this.selectedFile);
+  formData.append('file', this.selectedFile);
 
   if (this.eventId) {
     this.eventService.uploadPhoto(this.eventId, formData).subscribe({
       next: (response) => {
         if (response.data && response.data.photo) {
-          this.eventPictureUrl = `${this.baseUrl}/uploads-event/${response.data.photo}`;
+          this.eventPictureUrl = response.data.photo;
         } else {
           this.eventPictureUrl = '/assets/facebookanonimo.jpg';
         }
