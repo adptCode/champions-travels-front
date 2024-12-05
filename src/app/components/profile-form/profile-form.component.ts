@@ -60,7 +60,7 @@ export class ProfileFormComponent {
         this.profileForm.patchValue(this.user)
         console.log(response);
         if(this.user.profile_picture) {
-          this.profilePictureUrl = this.user.profile_picture
+          this.profilePictureUrl = `${this.user.profile_picture}?t=${new Date().getTime()}`;
         } else {
           this.profilePictureUrl = '/assets/facebookanonimo.jpg';
         }
@@ -139,7 +139,7 @@ export class ProfileFormComponent {
     this.userService.uploadPhoto(this.selectedFile).subscribe({
       next: (response) => {
         if (response.data && response.data.profile_picture) {
-          this.profilePictureUrl = `${this.baseUrl}/uploads/${response.data.profile_picture}`;
+          this.profilePictureUrl = `${response.data.profile_picture}?t=${new Date().getTime()}`;
         } else {
           this.profilePictureUrl = '/assets/facebookanonimo.jpg';
         }
